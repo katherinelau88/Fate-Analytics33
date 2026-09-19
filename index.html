@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FateFor · 盘古宇宙 — 命运实验 · 山海观象</title>
+  <meta name="description" content="FateFor（fatefor.com）盘古宇宙：研究假说行情与预测准确率。免费加入，创世值不可提现。山海经意象观象台，非投资、非博彩。" />
+  <meta name="theme-color" content="#050505" />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+
+  <!-- Genesis announcement -->
+  <aside class="genesis-banner" id="genesis-banner" role="region" aria-label="创世期公告">
+    <div class="genesis-banner-inner">
+      <span class="genesis-seal" aria-hidden="true">启</span>
+      <div class="genesis-copy">
+        <div class="genesis-kicker">
+          <span class="genesis-pill">宇宙初启</span>
+          <span class="genesis-dates">创世期 2026.10.01 — 10.31</span>
+        </div>
+        <p class="genesis-title">盘古宇宙刚刚裂开第一道光。</p>
+        <p class="genesis-body">
+          命运数据库正在努力积累。欢迎各界人士以真实人生加入观测——
+          <strong>创世期内登记完全免费</strong>；创世期结束后，新居民登记将收取
+          <strong>1 美元</strong>研究访问费（用于认真度门槛与基础设施，细则以届时公示为准）。
+        </p>
+      </div>
+      <a class="genesis-cta" href="#pangu">参与创世</a>
+    </div>
+  </aside>
+
+  <!-- Welcome · 创世登记 -->
+  <div class="modal-overlay" id="welcome-modal" role="dialog" aria-modal="true" aria-labelledby="welcome-title" hidden>
+    <div class="modal-card seal-frame">
+      <div class="seal-mark" aria-hidden="true">开</div>
+      <div class="modal-kicker">DESTINY EXPERIMENT</div>
+      <h2 id="welcome-title">欢迎进入盘古宇宙</h2>
+      <p class="modal-lead">
+        五千年，人们仰望星空读命运；如今我们把人间性命汇成星图。
+        Destiny Experiment 观察真实生命如何展开，校验古老山海图案——数据决定可见，神话只开题。
+      </p>
+      <p class="modal-lead">
+        你是第 <span id="welcome-n" class="coral">—</span> 位创世居民。宇宙尚早，每一份匿名生命年表都在改写地图。
+        创世期（10.1–10.31）登记免费；赠 <span class="coral">+500 创世值</span>。期后新居民登记将收 1 美元。
+      </p>
+      <p class="modal-one-line">创世值不可提现、不可兑现金、不是币。</p>
+      <div class="modal-actions">
+        <button type="button" class="btn" id="btn-welcome-join">进入宇宙</button>
+        <button type="button" class="btn btn-ghost" id="btn-welcome-later">先四处看看</button>
+      </div>
+      <p class="modal-fine">演示存本机 localStorage · <a href="./privacy.html">隐私</a></p>
+    </div>
+  </div>
+
+    <div class="help-popover" id="help-popover" role="dialog" aria-labelledby="help-popover-title" hidden>
+    <button type="button" class="help-close" id="help-close" aria-label="关闭">×</button>
+    <h3 id="help-popover-title"></h3>
+    <div class="help-body" id="help-popover-body"></div>
+  </div>
+
+  <div class="toast-stack" id="toast-stack" aria-live="polite"></div>
+
+  <!-- A) Live homepage -->
+  <div class="live-frame-wrap" id="live-frame-wrap" aria-label="线上首页嵌入">
+    <div class="live-frame-badge">
+      <span class="badge badge-coral">LIVE · fatefor.com</span>
+      <span class="badge">盘古宇宙 v3 · 首页未改版</span>
+    </div>
+    <iframe id="live-iframe" title="FateFor live homepage" src="https://fatefor.com"
+      loading="eager" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    <div class="scroll-hint">
+      <a href="#pangu">↓ 进入盘古宇宙 · 山海观象</a>
+    </div>
+  </div>
+
+  <!-- Offline first-fold clone -->
+  <section class="offline-hero" id="offline-hero" aria-label="离线首页首屏克隆">
+    <div class="offline-inner">
+      <div class="brand-row">
+        <div>
+          <h1>Destiny Experiment · FateFor</h1>
+          <div class="sub">Human Life Observatory · 离线首屏（?offline=1）</div>
+        </div>
+        <span class="badge badge-coral">EMPTY UNIVERSE · n=0</span>
+      </div>
+      <p class="hero-kicker">DXI // Human Signal Exchange</p>
+      <h2 class="hero-title">The Destiny Market is moving.</h2>
+      <p class="hero-lead">
+        Birth-time signals across real human-life outcomes.
+        五千年读天象；如今以人间性命重绘星图。下方模块延续<strong>山海经</strong>观象语言——假说行情，非投资。
+      </p>
+      <div class="dxi-console">
+        <div class="dxi-console-head">
+          <div>
+            <span>DXI · Destiny Signal Activity</span>
+            <small>normalized research pulse · 研究信号指数（非交易标的）</small>
+          </div>
+          <small class="mono muted">Live simulation</small>
+        </div>
+        <div class="index-grid" id="offline-index-grid"></div>
+        <div class="demo-note">观测样本 n=0 · 等待第一位创世居民 · 非投资建议 · 免费加入</div>
+      </div>
+      <div class="shanhai-nav">
+        <a href="#tickers"><span class="shanhai-seal">山</span><strong>假说山脉</strong><p>四象限信号脉动</p></a>
+        <a href="#ticket"><span class="shanhai-seal">海</span><strong>预测潮汐</strong><p>方向简 · 准确率结算</p></a>
+        <a href="#radar"><span class="shanhai-seal">异</span><strong>同生异人</strong><p>同生雷达</p></a>
+        <a href="#life-form"><span class="shanhai-seal">火</span><strong>记入年表</strong><p>生命数据漏斗</p></a>
+      </div>
+      <p class="center-link"><a class="badge badge-coral" href="#pangu">↓ 继续山海观象</a></p>
+    </div>
+  </section>
+
+  <!-- Atlas bar -->
+  <header class="atlas-bar" id="atlas-bar">
+    <div class="atlas-bar-inner">
+      <div class="atlas-brand">
+        <span class="seal-mini" aria-hidden="true">盘</span>
+        <strong>盘古宇宙 · 山海观象</strong>
+        <span class="atlas-tag">研究假说 · 准确率结算</span>
+      </div>
+      <div class="atlas-meta">
+        <span id="desk-citizen">未登记</span>
+        <span class="sep">·</span>
+        <span>创世值 <b id="desk-points">0</b></span>
+        <span class="sep">·</span>
+        <span id="desk-clock" class="mono"></span>
+      </div>
+      <nav class="atlas-nav">
+        <a href="#tickers">山脉</a>
+        <a href="#ticket">潮汐</a>
+        <a href="#positions">在途</a>
+        <a href="#boards">双榜</a>
+        <a href="#life-form">年表</a>
+        <a href="./privacy.html">隐私</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="research-wrap" id="pangu">
+    <!-- Friday settlement -->
+    <div class="settle-strip" id="settle-strip" role="status">
+      <div class="settle-inner">
+        <span class="settle-bell" aria-hidden="true">◎</span>
+        <div>
+          <strong>周五 · 宇宙结算</strong>
+          <span id="settle-countdown">距下次准确率结算 —</span>
+        </div>
+        <span class="settle-note">结算 = 预测方向 vs 假说收盘脉动 · 准确分 / 徽章 / 少量创世值（参与）· <em>不是</em>下注赢币</span>
+      </div>
+    </div>
+
+    <!-- 01 Hypothesis mountains / tickers -->
+    <section class="section" id="tickers">
+      <p class="section-label"><span class="shanhai-seal inline">山</span> 01 · Mountains of Hypothesis</p>
+      <div class="title-row">
+        <h2>假说山脉 · 四象限脉动</h2>
+        <button type="button" class="help-btn" data-help="help-tickers" aria-label="假说行情玩法说明">?<span class="help-btn-text">玩法</span></button>
+      </div>
+      <p class="en-sub">LOVE / CAREER / WEALTH / HEALTH — 研究假说行情。涨跌色仅表示方向感，非证券报价。</p>
+      <div class="ticker-tape" id="ticker-tape" aria-label="信号走带"></div>
+      <div class="quote-grid" id="quote-grid"></div>
+      <p class="disclaimer-inline">
+        视觉可有行情闪烁，实质为<strong>研究假说行情</strong>。
+        不可买入卖出、无保证金、无爆仓。居民仅可投递<strong>预测简</strong>（方向判断）。
+      </p>
+    </section>
+
+    <!-- 02 Prediction brief -->
+    <section class="section" id="ticket">
+      <p class="section-label"><span class="shanhai-seal inline">海</span> 02 · Tides of Prediction</p>
+      <div class="title-row">
+        <h2>预测潮汐 · 方向简</h2>
+        <button type="button" class="help-btn" data-help="help-ticket" aria-label="研究预测玩法说明">?<span class="help-btn-text">玩法</span></button>
+      </div>
+      <p class="en-sub">每张均为「预测简 / 准确率结算」——参与得少量创世值，准确率计分，无本金无赔率。</p>
+      <div class="tide-grid">
+        <div class="panel seal-frame">
+          <div class="panel-head">
+            <h3>投递预测简</h3>
+            <span class="pill">预测单 · 非下注</span>
+          </div>
+          <form id="predict-form" autocomplete="off">
+            <label class="field">
+              <span>假说山脉</span>
+              <select name="symbol" id="pred-symbol" required>
+                <option value="LOVE">LOVE · 关系假说</option>
+                <option value="CAREER">CAREER · 事业假说</option>
+                <option value="WEALTH">WEALTH · 财富假说</option>
+                <option value="HEALTH">HEALTH · 健康模式假说</option>
+              </select>
+            </label>
+            <fieldset class="dir-fieldset">
+              <legend>方向（预测）</legend>
+              <label class="dir-opt"><input type="radio" name="direction" value="long" checked /> 看多</label>
+              <label class="dir-opt"><input type="radio" name="direction" value="short" /> 看空</label>
+              <label class="dir-opt"><input type="radio" name="direction" value="range" /> 震荡</label>
+            </fieldset>
+            <label class="field">
+              <span>观象札记（可选）</span>
+              <input type="text" name="note" id="pred-note" maxlength="80" placeholder="例如：样本 n 上升，假说偏多…" />
+            </label>
+            <p class="ticket-legal">
+              进入「在途预测」。周五结算按方向准确率计分；
+              <strong>无本金、无赔率、无「下注赢币」、无爆仓</strong>。
+            </p>
+            <button type="submit" class="btn btn-block">投递预测简</button>
+          </form>
+        </div>
+
+        <div class="panel">
+          <div class="panel-head">
+            <h3>潮汐权重（示意）</h3>
+            <span class="pill pill-muted">社区方向聚合 · 非订单簿</span>
+          </div>
+          <div class="tide-bars" id="hypo-book">
+            <div class="tide-mid">
+              <div class="book-last" id="book-last">—</div>
+              <div class="book-sub">选中山脉 · 假说中间脉动</div>
+            </div>
+            <div class="tide-row">
+              <span class="tide-lab up">看多</span>
+              <div class="tide-track"><i id="tide-bid" style="width:55%"></i></div>
+              <span class="tide-pct" id="tide-bid-pct">55%</span>
+            </div>
+            <div class="tide-row">
+              <span class="tide-lab down">看空</span>
+              <div class="tide-track dim"><i id="tide-ask" style="width:30%"></i></div>
+              <span class="tide-pct" id="tide-ask-pct">30%</span>
+            </div>
+            <div class="tide-row">
+              <span class="tide-lab range">震荡</span>
+              <div class="tide-track muted"><i id="tide-range" style="width:15%"></i></div>
+              <span class="tide-pct" id="tide-range-pct">15%</span>
+            </div>
+            <div id="book-asks" hidden></div>
+            <div id="book-bids" hidden></div>
+          </div>
+          <p class="disclaimer-inline" style="margin-top:12px">潮汐条 = 居民预测方向的聚合示意，不是可成交订单。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03 Open predictions -->
+    <section class="section" id="positions">
+      <p class="section-label">03 · Open Scrolls</p>
+      <div class="title-row">
+        <h2>在途预测 · 浮动准确期望</h2>
+        <button type="button" class="help-btn" data-help="help-positions" aria-label="在途预测玩法说明">?<span class="help-btn-text">玩法</span></button>
+      </div>
+      <p class="en-sub">卷轴列表可有持仓感，列为「浮动准确期望」——不是资金盈亏。Demo 存 localStorage。</p>
+      <div class="positions-toolbar">
+        <span>在途 <b id="pos-count">0</b> 简</span>
+        <button type="button" class="btn btn-ghost btn-sm" id="btn-clear-preds">清空本机预测</button>
+      </div>
+      <div class="table-wrap">
+        <table class="pos-table">
+          <thead>
+            <tr>
+              <th>简号</th>
+              <th>山脉</th>
+              <th>方向</th>
+              <th>开简脉动</th>
+              <th>现脉动</th>
+              <th>浮动准确期望</th>
+              <th>状态</th>
+            </tr>
+          </thead>
+          <tbody id="positions-body">
+            <tr class="empty-row"><td colspan="7">尚无预测简 — 在潮汐区投递一简</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 04 Dual boards -->
+    <section class="section" id="boards">
+      <p class="section-label">04 · Twin Ledgers</p>
+      <div class="title-row">
+        <h2>双榜 · 贡献为山，准确为海</h2>
+        <button type="button" class="help-btn" data-help="help-boards" aria-label="贡献榜玩法说明">?<span class="help-btn-text">玩法</span></button>
+      </div>
+      <p class="en-sub">创世贡献榜（数据质量）为主；预测准确榜为辅——不是财富榜。</p>
+      <div class="boards-grid">
+        <div class="panel">
+          <div class="panel-head">
+            <h3><span class="shanhai-seal inline">山</span> 创世贡献榜 <span class="pill">主榜</span></h3>
+          </div>
+          <div class="table-wrap flat">
+            <table class="leaderboard">
+              <thead><tr><th>排名</th><th>创世居民</th><th>贡献</th><th>创世值</th></tr></thead>
+              <tbody id="board-contrib"></tbody>
+            </table>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="panel-head">
+            <h3><span class="shanhai-seal inline">海</span> 预测准确榜 <span class="pill pill-muted">次榜</span></h3>
+          </div>
+          <div class="table-wrap flat">
+            <table class="leaderboard">
+              <thead><tr><th>排名</th><th>创世居民</th><th>准确率</th><th>徽章</th></tr></thead>
+              <tbody id="board-accuracy"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <p class="disclaimer-inline">奖励：徽章、创世编号、山海框。<strong>无现金、无提现、无 P2P、无场外变现。</strong></p>
+    </section>
+
+    <!-- 05 创世值 -->
+    <section class="section" id="earn">
+      <p class="section-label">05 · 创世值</p>
+      <div class="title-row">
+        <h2>创世值如何汇入</h2>
+        <button type="button" class="help-btn" data-help="help-earn" aria-label="创世值玩法说明">?<span class="help-btn-text">玩法</span></button>
+      </div>
+      <p class="en-sub">参与积分 · 永不称「币」· 不可兑法币 / USDT · 不可提现</p>
+      <div class="earn-grid">
+        <div class="earn-card">
+          <span class="shanhai-seal">开</span>
+          <h3>免费创世登记</h3>
+          <p>首次成为创世居民（本机演示）。</p>
+          <span class="pts-tag">+500 创世值</span>
+        </div>
+        <div class="earn-card">
+          <span class="shanhai-seal">火</span>
+          <h3>记入生命年表</h3>
+          <p>匿名出生信息，八字校验漏斗。</p>
+          <span class="pts-tag">+120 创世值</span>
+        </div>
+        <div class="earn-card">
+          <span class="shanhai-seal">海</span>
+          <h3>完成一简预测</h3>
+          <p>参与奖：与输赢无关。</p>
+          <span class="pts-tag">+15 创世值</span>
+        </div>
+        <div class="earn-card">
+          <span class="shanhai-seal">异</span>
+          <h3>邀请一位贡献者</h3>
+          <p>仅一级；每月上限；禁 MLM。</p>
+          <span class="pts-tag">+200 · 月封顶</span>
+        </div>
+      </div>
+      <div class="callout">
+        <strong>合规声明：</strong>
+        创世值 = 研究贡献可见度，不是加密货币 / 证券，不能提现、不能 P2P、不能兑现金或 USDT、不承诺升值。
+        邀请仅一级 +200，月度封顶，杜绝多级分销。
+      </div>
+      <div class="invite-box" id="invite-box">
+        <h3>邀请符（一级）</h3>
+        <p>对方完成免费登记后，你可获 +200 创世值（演示：本机模拟，月上限 3 次 / 600 值）。</p>
+        <div class="invite-row">
+          <code id="invite-code">—</code>
+          <button type="button" class="btn btn-ghost btn-sm" id="btn-copy-invite">复制</button>
+          <button type="button" class="btn btn-sm" id="btn-sim-invite">模拟成功邀请 +200</button>
+        </div>
+        <p class="invite-cap" id="invite-cap">本月已用 0 / 3</p>
+      </div>
+    </section>
+
+    <!-- 06 Same-birth radar -->
+    <section class="section" id="radar">
+      <p class="section-label"><span class="shanhai-seal inline">异</span> 06 · Strange Lives · Same Birth</p>
+      <div class="title-row">
+        <h2>同生雷达</h2>
+        <button type="button" class="help-btn" data-help="help-radar" aria-label="同生时雷达玩法说明">?<span class="help-btn-text">玩法</span></button>
+      </div>
+      <p class="en-sub">相近出生窗口的匿名贡献密度（示意）。非社交约会、非定位追踪。</p>
+      <div class="radar-widget panel">
+        <div class="radar-viz" id="radar-viz" aria-hidden="true">
+          <div class="radar-ring r1"></div>
+          <div class="radar-ring r2"></div>
+          <div class="radar-ring r3"></div>
+          <div class="radar-sweep"></div>
+          <div class="radar-blips" id="radar-blips"></div>
+          <div class="radar-core">YOU</div>
+        </div>
+        <div class="radar-side">
+          <div class="stat-mini">
+            <div class="label">±3 日同生窗口</div>
+            <div class="num" id="radar-near">0</div>
+          </div>
+          <div class="stat-mini">
+            <div class="label">同月同日（全球示意）</div>
+            <div class="num" id="radar-day">0</div>
+          </div>
+          <div class="stat-mini">
+            <div class="label">重叠八字特征簇</div>
+            <div class="num" id="radar-cluster">0</div>
+          </div>
+          <p class="disclaimer-inline">雷达为研究可视化，不展示真实身份或精确住址。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 07 Life data -->
+    <section class="section" id="life-form">
+      <p class="section-label"><span class="shanhai-seal inline">火</span> 07 · Add Your Chronicle</p>
+      <div class="title-row">
+        <h2>生命年表 · 八字校验漏斗</h2>
+        <button type="button" class="help-btn" data-help="help-life" aria-label="人生简册玩法说明">?<span class="help-btn-text">玩法</span></button>
+      </div>
+      <p class="en-sub">样本质量漏斗。健康项为<strong>自我报告</strong>，非正式诊疗。</p>
+      <form class="life-form panel seal-frame" id="life-data-form">
+        <div class="form-grid">
+          <label class="field">
+            <span>出生日期</span>
+            <input type="date" name="birthDate" id="birth-date" required />
+          </label>
+          <label class="field">
+            <span>出生时辰（可选）</span>
+            <select name="birthHour" id="birth-hour">
+              <option value="">未知</option>
+              <option value="23-01">子 23–01</option>
+              <option value="01-03">丑 01–03</option>
+              <option value="03-05">寅 03–05</option>
+              <option value="05-07">卯 05–07</option>
+              <option value="07-09">辰 07–09</option>
+              <option value="09-11">巳 09–11</option>
+              <option value="11-13">午 11–13</option>
+              <option value="13-15">未 13–15</option>
+              <option value="15-17">申 15–17</option>
+              <option value="17-19">酉 17–19</option>
+              <option value="19-21">戌 19–21</option>
+              <option value="21-23">亥 21–23</option>
+            </select>
+          </label>
+          <label class="field">
+            <span>出生城市（大致）</span>
+            <input type="text" name="city" id="birth-city" maxlength="40" placeholder="例如：上海" />
+          </label>
+          <label class="field">
+            <span>性别（研究用，可选）</span>
+            <select name="gender" id="birth-gender">
+              <option value="">不愿透露</option>
+              <option value="F">女</option>
+              <option value="M">男</option>
+              <option value="X">其他 / 非二元</option>
+            </select>
+          </label>
+        </div>
+        <fieldset class="health-fieldset">
+          <legend>健康自我报告（可选 · 非医疗诊断）</legend>
+          <p class="health-disclaimer">
+            仅用于群体模式研究，<strong>不是</strong>医疗建议、诊断或治疗。
+            若有健康问题，请咨询持牌医生。
+          </p>
+          <label class="check"><input type="checkbox" name="healthTags" value="sleep" /> 睡眠节律不稳定</label>
+          <label class="check"><input type="checkbox" name="healthTags" value="stress" /> 长期压力感</label>
+          <label class="check"><input type="checkbox" name="healthTags" value="energy" /> 精力周期性波动</label>
+          <label class="check"><input type="checkbox" name="healthTags" value="none" /> 暂无想报告的项</label>
+        </fieldset>
+        <label class="check consent">
+          <input type="checkbox" name="consent" id="life-consent" required />
+          我同意上述信息仅存本机演示存储，并已阅读 <a href="./privacy.html">隐私说明</a>。免费提交。
+        </label>
+        <button type="submit" class="btn">记入年表 · +120 创世值</button>
+      </form>
+    </section>
+
+    <!-- 08 Aggregates -->
+    <section class="section" id="results">
+      <p class="section-label">08 · Observatory Card</p>
+      <h2>观象卡片（演示聚合）</h2>
+      <p class="en-sub">登记 / 年表 / 预测后的本机聚合。</p>
+      <div class="agg-grid" id="agg-grid">
+        <div class="agg-card">
+          <div class="label">创世编号</div>
+          <div class="val mono" id="agg-id">—</div>
+        </div>
+        <div class="agg-card">
+          <div class="label">创世值</div>
+          <div class="val mono" id="agg-pts">0</div>
+        </div>
+        <div class="agg-card">
+          <div class="label">预测准确分</div>
+          <div class="val mono" id="agg-acc">—</div>
+        </div>
+        <div class="agg-card">
+          <div class="label">徽章</div>
+          <div class="val" id="agg-badges">尚未获得</div>
+        </div>
+      </div>
+      <div class="panel" id="bazi-preview" hidden>
+        <h3>八字校验漏斗 · 示意</h3>
+        <p class="en-sub" style="margin-bottom:8px">本地规则演示，非专业命理鉴定</p>
+        <pre class="bazi-pre" id="bazi-out"></pre>
+      </div>
+    </section>
+
+    <!-- Rewards -->
+    <section class="section" id="rewards">
+      <p class="section-label">09 · Seals &amp; Frames</p>
+      <h2>印鉴与山海框</h2>
+      <p class="en-sub">徽章 · 创世编号 · 头像框 — 无现金</p>
+      <div class="reward-grid">
+        <div class="reward-card"><div class="reward-ico seal-mini">开</div><h3>创世居民</h3><p>完成免费登记</p></div>
+        <div class="reward-card"><div class="reward-ico seal-mini">异</div><h3>同生雷达</h3><p>提交出生日后点亮</p></div>
+        <div class="reward-card"><div class="reward-ico seal-mini">准</div><h3>准心印</h3><p>累计 5 简预测</p></div>
+        <div class="reward-card"><div class="reward-ico seal-mini">山</div><h3>珊瑚山海框</h3><p>贡献榜示意</p></div>
+      </div>
+    </section>
+
+    <footer class="site-footer" id="footer">
+      <div class="footer-inner">
+        <h2>研究网站 · 风险与合规摘要</h2>
+        <div class="footer-legal">
+          <p>
+            <strong>非投资 / 非博彩：</strong>本站为 Destiny Experiment（命运实验）研究观象台。
+            假说行情与指数仅供研究展示，不构成投资建议，不是证券、衍生品或可交易资产；
+            「预测简」按准确率计分，不是下注、不是赔率博弈，无本金、无爆仓。
+          </p>
+          <p>
+            <strong>创世值：</strong>仅为研究参与积分与贡献可见度，<strong>无现金价值</strong>，
+            不可提现、不可转让、不可 P2P、不可兑法币或 USDT，不承诺升值。邀请仅一级且有月封顶，禁止多级分销。
+          </p>
+          <p>
+            <strong>数据与健康：</strong>生命年表与健康选项为用户<strong>自我报告</strong>，非正式医疗诊断或治疗建议。
+            演示数据存于本机 localStorage。正式服务须满 <strong>18 周岁</strong>。
+          </p>
+          <p class="en">
+            Research site only — not investment or gambling. 创世值 has no cash value and cannot be transferred or withdrawn.
+            Self-reported data; not medical advice. 18+ for production use. Free to join.
+          </p>
+        </div>
+        <div class="footer-meta">
+          <span>Accent #ff5f4b · match live · 山海经</span>
+          <span>fatefor-v3 · static · free join</span>
+          <span><a href="./privacy.html">隐私说明</a></span>
+          <span><a href="./LEGAL.md">LEGAL.md</a></span>
+          <span><a href="./README.md">README.md</a></span>
+          <span><a href="https://fatefor.com" rel="noopener">fatefor.com</a></span>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <script src="./app.js" defer></script>
+</body>
+</html>
